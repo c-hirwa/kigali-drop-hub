@@ -6,46 +6,46 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="pt-24 section-padding">
+      <div className="pt-20 section-padding">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="font-display text-xs uppercase tracking-[0.3em] text-gold mb-4">Get in Touch</p>
-          <h1 className="font-display text-4xl md:text-5xl font-bold uppercase mb-6">
-            Let's Talk
+          <p className="font-display text-xs uppercase tracking-[0.4em] text-neon mb-3">Contact</p>
+          <h1 className="font-display text-4xl md:text-5xl font-bold uppercase mb-4">
+            Hit Us Up
           </h1>
-          <p className="text-muted-foreground mb-12 max-w-md mx-auto">
-            All orders are placed through WhatsApp for a direct, personal experience. Reach out — we respond fast.
+          <p className="text-muted-foreground text-sm mb-10 max-w-sm mx-auto uppercase tracking-wider">
+            Orders go through WhatsApp. Fast replies. Worldwide shipping.
           </p>
 
-          <div className="grid gap-6 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-3">
             <a
               href="https://wa.me/250780000000"
               target="_blank"
               rel="noreferrer"
-              className="product-card p-8 flex flex-col items-center gap-4 hover:glow-green"
+              className="product-card p-6 flex flex-col items-center gap-3 hover:glow-green"
             >
-              <MessageCircle className="text-green-glow" size={32} />
-              <span className="font-display text-sm uppercase tracking-wider">WhatsApp</span>
-              <span className="text-xs text-muted-foreground">Order & Chat</span>
+              <MessageCircle className="text-neon" size={28} />
+              <span className="font-display text-xs uppercase tracking-wider font-bold">WhatsApp</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Order here</span>
             </a>
 
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="product-card p-8 flex flex-col items-center gap-4 hover:glow-gold"
+              className="product-card p-6 flex flex-col items-center gap-3 hover:glow-green"
             >
-              <Instagram className="text-gold" size={32} />
-              <span className="font-display text-sm uppercase tracking-wider">Instagram</span>
-              <span className="text-xs text-muted-foreground">@kigalistr</span>
+              <Instagram className="text-neon" size={28} />
+              <span className="font-display text-xs uppercase tracking-wider font-bold">Instagram</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">@thecultureplug</span>
             </a>
 
             <a
-              href="mailto:hello@kigalistr.com"
-              className="product-card p-8 flex flex-col items-center gap-4 hover:glow-green"
+              href="mailto:plug@thecultureplug.com"
+              className="product-card p-6 flex flex-col items-center gap-3 hover:glow-green"
             >
-              <Mail className="text-green-glow" size={32} />
-              <span className="font-display text-sm uppercase tracking-wider">Email</span>
-              <span className="text-xs text-muted-foreground">hello@kigalistr.com</span>
+              <Mail className="text-neon" size={28} />
+              <span className="font-display text-xs uppercase tracking-wider font-bold">Email</span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">plug@thecultureplug.com</span>
             </a>
           </div>
         </div>
