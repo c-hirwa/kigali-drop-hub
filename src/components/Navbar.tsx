@@ -14,10 +14,10 @@ export default function Navbar() {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        <Link to="/" className="font-display font-bold text-xl tracking-[0.2em] uppercase text-gradient">
-          KIGALI STR.
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-14">
+        <Link to="/" className="font-display font-bold text-lg tracking-[0.15em] uppercase text-gradient">
+          TCP.
         </Link>
 
         {/* Desktop */}
@@ -26,9 +26,9 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              className={`font-display text-sm uppercase tracking-[0.15em] transition-colors duration-300 ${
+              className={`font-display text-xs uppercase tracking-[0.2em] transition-colors duration-200 ${
                 location.pathname === l.to
-                  ? "text-gold"
+                  ? "text-neon"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -43,7 +43,7 @@ export default function Navbar() {
           className="md:hidden text-foreground"
           aria-label="Toggle menu"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -56,8 +56,8 @@ export default function Navbar() {
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className={`font-display text-lg uppercase tracking-[0.15em] ${
-                  location.pathname === l.to ? "text-gold" : "text-muted-foreground"
+                className={`font-display text-base uppercase tracking-[0.2em] ${
+                  location.pathname === l.to ? "text-neon" : "text-muted-foreground"
                 }`}
               >
                 {l.label}
