@@ -29,11 +29,11 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-2">
               <h4 className="font-display text-[10px] uppercase tracking-[0.3em] text-neon mb-1">Connect</h4>
-              <a href="https://wa.me/250780000000" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-                WhatsApp
-              </a>
               <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
                 Instagram
+              </a>
+              <a href="mailto:plug@thecultureplug.com" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                Email
               </a>
             </div>
           </div>
