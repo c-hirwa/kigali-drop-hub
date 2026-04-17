@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const links = [
   { to: "/", label: "Home" },
@@ -12,6 +13,7 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { count } = useCart();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
@@ -20,7 +22,6 @@ export default function Navbar() {
           TCP.
         </Link>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <Link
@@ -37,17 +38,29 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-foreground"
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-4">
+          <Link
+            to="/cart"
+            className="relative text-foreground hover:text-neon transition-colors"
+            aria-label="Cart"
+          >
+            <ShoppingBag size={20} />
+            {count > 0 && (
+              <span className="absolute -top-2 -right-2 bg-neon text-background text-[10px] font-display font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                {count}
+              </span>
+            )}
+          </Link>
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden text-foreground"
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border animate-fade-in">
           <div className="px-6 py-6 flex flex-col gap-4">

@@ -1,15 +1,19 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { products } from "@/data/products";
+import { useCart } from "@/context/CartContext";
+import { toast } from "sonner";
 
 export default function ProductPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const product = products.find((p) => p.id === id);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const { addItem } = useCart();
 
-  if (!product) {
+  if (!product || product.comingSoon) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <p className="text-muted-foreground">Not found.</p>
@@ -17,9 +21,23 @@ export default function ProductPage() {
     );
   }
 
-  const whatsappMessage = encodeURIComponent(
-    `Yo, I want: ${product.name}${selectedSize ? ` (Size: ${selectedSize})` : ""} — $${product.price}`
-  );
+  const handleAdd = () => {
+    if (product.sizes && !selectedSize) {
+      toast.error("Pick a size first.");
+      return;
+    }
+    addItem(product, selectedSize);
+    toast.success("Added to cart.");
+  };
+
+  const handleBuyNow = () => {
+    if (product.sizes && !selectedSize) {
+      toast.error("Pick a size first.");
+      return;
+    }
+    addItem(product, selectedSize);
+    navigate("/checkout");
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -31,7 +49,6 @@ export default function ProductPage() {
           </Link>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            {/* Image */}
             <div className="aspect-[3/4] overflow-hidden bg-card">
               <img
                 src={product.image}
@@ -42,11 +59,10 @@ export default function ProductPage() {
               />
             </div>
 
-            {/* Details */}
             <div className="flex flex-col justify-center">
               {product.isNew && (
                 <span className="inline-block w-fit px-3 py-1 text-[10px] font-display uppercase tracking-[0.2em] bg-neon text-background font-bold mb-4">
-                  Drop
+                  New
                 </span>
               )}
               <h1 className="font-display text-2xl md:text-3xl font-bold uppercase mb-2">
@@ -59,7 +75,6 @@ export default function ProductPage() {
                 {product.description}
               </p>
 
-              {/* Size selector */}
               {product.sizes && (
                 <div className="mb-8">
                   <p className="font-display text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-3">Size</p>
@@ -81,17 +96,16 @@ export default function ProductPage() {
                 </div>
               )}
 
-              {/* Order via WhatsApp */}
-              <a
-                href={`https://wa.me/250780000000?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-primary text-center"
-              >
-                Cop Now — WhatsApp
-              </a>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button onClick={handleBuyNow} className="btn-primary flex-1">
+                  Buy Now
+                </button>
+                <button onClick={handleAdd} className="btn-outline flex-1">
+                  Add to Cart
+                </button>
+              </div>
               <p className="text-[10px] text-muted-foreground mt-3 uppercase tracking-wider">
-                DM to order. We ship worldwide.
+                Secure checkout. Worldwide shipping.
               </p>
             </div>
           </div>

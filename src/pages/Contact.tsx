@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MessageCircle, Instagram, Mail } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 
 export default function Contact() {
   return (
@@ -13,26 +13,15 @@ export default function Contact() {
             Hit Us Up
           </h1>
           <p className="text-muted-foreground text-sm mb-10 max-w-sm mx-auto uppercase tracking-wider">
-            Orders go through WhatsApp. Fast replies. Worldwide shipping.
+            Questions, collabs, or just lurking. We reply fast.
           </p>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            <a
-              href="https://wa.me/250780000000"
-              target="_blank"
-              rel="noreferrer"
-              className="product-card p-6 flex flex-col items-center gap-3 hover:glow-green"
-            >
-              <MessageCircle className="text-neon" size={28} />
-              <span className="font-display text-xs uppercase tracking-wider font-bold">WhatsApp</span>
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">Order here</span>
-            </a>
-
+          <div className="grid gap-4 sm:grid-cols-2">
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noreferrer"
-              className="product-card p-6 flex flex-col items-center gap-3 hover:glow-green"
+              className="product-card p-6 flex flex-col items-center gap-3"
             >
               <Instagram className="text-neon" size={28} />
               <span className="font-display text-xs uppercase tracking-wider font-bold">Instagram</span>
@@ -41,7 +30,7 @@ export default function Contact() {
 
             <a
               href="mailto:plug@thecultureplug.com"
-              className="product-card p-6 flex flex-col items-center gap-3 hover:glow-green"
+              className="product-card p-6 flex flex-col items-center gap-3"
             >
               <Mail className="text-neon" size={28} />
               <span className="font-display text-xs uppercase tracking-wider font-bold">Email</span>
